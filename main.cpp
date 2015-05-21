@@ -67,6 +67,7 @@ int main(int argc, char** argv){
   treeSort.findOrderedEndNodeList();
 
   treeSort.sortTree();
+  treeSort.setValues(3.0);
   treeSort.tree.writeTreeFile((char*)outputFile.c_str());
   
 }

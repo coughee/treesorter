@@ -25,7 +25,8 @@ public:
   void insertSymTree(int endNode);
   void makeSymTree(int depth);
   int findInEndNodeList(int i);
-  
+
+  void setValues(double bifurcationExponent);
 
   //Testing
   void createTestTree(int depth);

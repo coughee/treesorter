@@ -220,4 +220,9 @@ void TreeSorter::readTree(char* filename){
   tree.readTree(filename);
 }
 
+void TreeSorter::setValues(double bifurcationExponent){
+  tree.bifurcationExponent = bifurcationExponent;
+  tree.setRadii(0);
+  tree.setPositions(0);
+}
 

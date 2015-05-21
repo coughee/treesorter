@@ -2,7 +2,7 @@
 #include <fstream>
 #include <cstdlib>
 #include <iostream>
-
+#include <cmath>
 using namespace std;
 //Swap the positions of two nodes with positions i and j.
 void Tree::swap(int id1, int id2){
@@ -190,4 +190,29 @@ void Tree::print(){
     nodes[i].print();
   }
   cout << "\n-----------Done-----------\n\n\n";
+}
+
+void Tree::setRadii(int id){
+  if(nodes[id].added){
+    nodes[id].radius = pow(2.0,-1.0/bifurcationExponent)*nodes[nodes[id].parent].radius;
+    if(nodes[id].isEndNode){
+      return;
+    }
+  }
+  setRadii(nodes[id].child1);
+  setRadii(nodes[id].child2);
+}
+
+void Tree::setPositions(int id){
+  int pid = nodes[id].parent;
+  if(nodes[id].added){
+    nodes[id].x = nodes[pid].x + 0.1*nodes[id].radius;
+    nodes[id].y = nodes[pid].y;
+    nodes[id].z = nodes[pid].z;
+  }
+  if(nodes[id].isEndNode){
+    return;
+  }
+  setPositions(nodes[id].child1);
+  setPositions(nodes[id].child2);
 }

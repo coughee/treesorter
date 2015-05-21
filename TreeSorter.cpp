@@ -18,9 +18,10 @@ void TreeSorter::sortTree(){
   double currentGoal = total/divisor;
   double increment = currentGoal;
   int percentageComplete = 100/divisor;
-  for(int i = firstIndex; i < tree.size(); i++){
+  for(long int i = firstIndex; i < tree.size(); i++){
+
     if(curEndNode > currentGoal){
-      cout << percentageComplete << "% Complete" << endl;
+      cout  << percentageComplete << "% Complete";
       currentGoal += increment;
       percentageComplete += (int)100/divisor;
     }

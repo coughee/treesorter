@@ -21,9 +21,10 @@ void TreeSorter::sortTree(){
   for(long int i = firstIndex; i < tree.size(); i++){
 
     if(curEndNode > currentGoal){
-      cout  << percentageComplete << "% Complete\n";
+      cout << "\r" << percentageComplete << "% Complete";
       currentGoal += increment;
       percentageComplete += (int)100/divisor;
+      cout << flush;
     }
     if( endNodesInOrder[curEndNode] > tree.size() - 1){
       cout << endNodesInOrder[curEndNode] << endl;
@@ -40,7 +41,8 @@ void TreeSorter::sortTree(){
       endNodesInOrder[position] = endNodesInOrder[curEndNode];
     } 
   }
-  cout << "\n--------Finished---------\n\n";
+  cout << "\r" << "100% Complete\n\n";
+
 }
 
 int TreeSorter::findInEndNodeList(int i){
@@ -52,7 +54,7 @@ int TreeSorter::findInEndNodeList(int i){
 }
 
 void TreeSorter::findEndNodes(){
-  cout << "Finding list of end Nodes...";
+  cout << "-- Finding list of end Nodes...";
   endNodes.clear();
   for(int i = 0; i < tree.size(); i++){
     if(tree.nodes[i].isEndNode){
@@ -63,7 +65,7 @@ void TreeSorter::findEndNodes(){
 }
 
 void TreeSorter::findOrderedEndNodeList(){
-  cout << "Finding ordered List of End Nodes...";
+  cout << "-- Finding ordered List of End Nodes...";
   findEndNodesInOrder(0);
   cout << "Complete - List size: ";
   cout << endNodesInOrder.size() << endl;
@@ -88,7 +90,7 @@ void TreeSorter::extendTree(){
 }
 
 void TreeSorter::insertSymTree(int endNode){
-  cout << "Inserting Symmetric Tree at each end Node...";
+  cout << "-- Inserting Symmetric Tree at each end Node...";
   int currentSize = tree.size() - 1;
   
   for(int i = 0; i < symmTree.size(); i++){
@@ -118,7 +120,7 @@ void TreeSorter::insertSymTree(int endNode){
 
 void TreeSorter::createTestTree(int depth){
   cout << "-- Building test tree of depth: ";
-  cout << depth << "\n";
+  cout << depth << "...";
   Node temp;
   double size = (int)pow(2, depth) - 1;
   int tempP = 0, tempC1 = 0, tempC2 = 0;
@@ -160,12 +162,12 @@ void TreeSorter::createTestTree(int depth){
       tree.nodes[i].radius = tempRadius;
     }
   }
-  cout << "-- Complete\n";
+  cout << "Complete\n";
   
 }
 void TreeSorter::makeSymTree(int depth){
   cout << "-- Building symmetric Tree of depth: ";
-  cout << depth << "\n";
+  cout << depth << "...";
   Node temp;
   double size = (int)pow(2, depth) - 1;
   int tempP = 0, tempC1 = 0, tempC2 = 0;
@@ -208,7 +210,7 @@ void TreeSorter::makeSymTree(int depth){
       symmTree.nodes[i].radius = tempRadius;
     }
   }
-  cout << "-- Complete\n";
+  cout << "Complete\n";
 
 }
 

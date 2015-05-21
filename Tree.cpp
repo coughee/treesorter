@@ -118,7 +118,7 @@ int Tree::size(){
 
 void Tree::readTree(char* filename){
   cout << "-- Loading Tree from file: ";
-  cout << filename << "\n";
+  cout << filename << "...";
   nodes.clear();
   double fs;
   int i = 2;
@@ -163,7 +163,7 @@ void Tree::readTree(char* filename){
       i = 2;
     } 
   }
-  cout << "-- Loading Complete\n";
+  cout << "Complete\n";
 }
 
 void Tree::writeTreeFile(char* outputfilename){

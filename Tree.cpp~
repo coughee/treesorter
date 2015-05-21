@@ -1,0 +1,61 @@
+#include "Tree.h"
+
+//Swap the positions of two nodes with positions i and j.
+void Tree::swap(int i, int j){
+  //Separate cases:
+  // same parent - don't do anything to internal state of any node except those involved in the swap (swap all variables)
+  // different parent - same as above except now must change the internal state of the parent node and two child nodes (update reference)
+  // one is parent of the other - 
+}
+
+int Tree::size(){
+  return nodes.size();
+}
+
+void Tree::readTree(char* filename){
+  nodes.clear();
+  double fs;
+  int i = 2;
+  char *inname = filename;
+  Node temp;
+  double x, y, z;
+  ifstream infile(inname);
+  double numnodes;
+  infile >> fs;
+  infile >> fs;
+  numnodes = 500;
+  flow = fs;
+  while (infile >> fs) {
+    if (i == 1) {
+      i++;
+    } else if (i == 2) {
+      temp.parent = (int) fs;
+      i++;
+    } else if (i == 3) {
+      temp.child1 = (int) fs;
+      i++;
+    } else if (i == 4) {
+      temp.child2 = (int) fs;
+      i++;
+    } else if (i == 5) {
+      temp.isEndNode = (bool)fs;
+      i++;
+    } else if (i == 6) {
+      temp.radius = (double)fs;
+      i++;
+    } else if (i == 7) {
+      temp.x = (double)fs;
+      i++;
+    } else if (i == 8) {
+      temp.y = (double)fs;
+      i++;
+    } else if (i == 9) {
+      temp.z = (double)fs;
+      i++;
+      nodes.push_back(temp);
+      i = 2;
+    } 
+  }
+
+  return nodes;
+}

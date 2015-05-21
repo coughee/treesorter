@@ -1,6 +1,10 @@
 #include <iostream>		
 #include <cstdlib>
 #include <string>
+#include <iostream>
+
+#include "TreeSorter.h"
+
 using namespace std;
 
 int main(int argc, char** argv){
@@ -22,7 +26,7 @@ int main(int argc, char** argv){
     return 0;
   }
 
-  int symTreeDepth;
+  int symTreeDepth = 0;
   string filename;
   string outputFile;
  
@@ -40,9 +44,29 @@ int main(int argc, char** argv){
       outputFile = argv[i++ + 1];
     }
   }
+  if(filename == ""){
+    cout << "ERROR: You must specify and input file. Exiting\n";
+    return 1;
+  }
+  if(outputFile == ""){
+    cout << "ERROR: You must specify an output file name. Exiting\n";
+  }
+  if(symTreeDepth == 0){
+    cout << "ERROR: symTreeDepth not specified or set to zero. Exiting\n";
+  }
   
+  cout << "\n\n------TreeSorter-----\n\n";
+  TreeSorter treeSort = TreeSorter();
+  treeSort.makeSymTree(symTreeDepth);
+  treeSort.readTree((char*)filename.c_str());
+  //treeSort.createTestTree(4);
 
-  cout << filename << endl;
-  cout << symTreeDepth << endl;
-  cout << outputFile << endl;
+  treeSort.findEndNodes();
+  treeSort.insertSymTree(1);
+
+  treeSort.findOrderedEndNodeList();
+
+  treeSort.sortTree();
+  treeSort.tree.writeTreeFile((char*)outputFile.c_str());
+  
 }

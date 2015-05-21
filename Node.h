@@ -1,12 +1,16 @@
 #ifndef NODE_H_INCLUDE
 #define NODE_H_INCLUDE
-class Node {
-  double x,y,z;
-  double r,l;
-  int p, c1, c2;
-  bool isEndNode;
 
+class Node {
+public:
+  double x,y,z;
+  double radius,length;
+  double flow;
+  int parent, child1, child2;
+  bool isEndNode;
+  Node(){}
   Node(double x, double y, double z, double r, double l, int p,
        int c1, int c2, bool isEndNode);
+  void print();
 };
 #endif

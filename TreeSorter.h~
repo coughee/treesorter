@@ -16,10 +16,11 @@ public:
   //Sorting and merging Symmetric Tree.
   void sortTree();
   void findEndNodes();
-  void findEndNodesInOrder();
+  void findEndNodesInOrder(int i);
   void extendTree();
   void insertSymTree(int endNode);
-  
+  void makeSymTree(int depth);
+  int findInEndNodeList(int i);
 
   //Input and Output
   void outputTree();

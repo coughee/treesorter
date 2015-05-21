@@ -157,6 +157,7 @@ void Tree::readTree(char* filename){
       i++;
     } else if (i == 9) {
       temp.z = (double)fs;
+      temp.added = false;
       i++;
       nodes.push_back(temp);
       i = 2;
@@ -166,6 +167,8 @@ void Tree::readTree(char* filename){
 }
 
 void Tree::writeTreeFile(char* outputfilename){
+  cout << "--Writing new tree to file ";
+  cout << outputfilename << "...";
   std::ofstream output;
   output.open(outputfilename);
   output << nodes.size() << endl;
@@ -181,6 +184,7 @@ void Tree::writeTreeFile(char* outputfilename){
     output << nodes[i].z << endl;
   }
   output.close();
+  cout << "Complete\n";
 }
 
 void Tree::print(){

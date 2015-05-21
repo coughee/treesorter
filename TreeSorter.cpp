@@ -21,7 +21,7 @@ void TreeSorter::sortTree(){
   for(long int i = firstIndex; i < tree.size(); i++){
 
     if(curEndNode > currentGoal){
-      cout  << percentageComplete << "% Complete";
+      cout  << percentageComplete << "% Complete\n";
       currentGoal += increment;
       percentageComplete += (int)100/divisor;
     }
@@ -192,6 +192,7 @@ void TreeSorter::makeSymTree(int depth){
     symmTree.nodes[i].child1 = tempC1;
     symmTree.nodes[i].child2 = tempC2;
     symmTree.nodes[i].isEndNode = tempIsEndNode;
+    symmTree.nodes[i].added = true;
   }
 
   int count = 0;
@@ -222,7 +223,12 @@ void TreeSorter::readTree(char* filename){
 
 void TreeSorter::setValues(double bifurcationExponent){
   tree.bifurcationExponent = bifurcationExponent;
+  cout << "--Setting radii for new nodes...";
   tree.setRadii(0);
+  cout << "Complete\n";
+  
+  cout << "--Setting positions for new nodes...";
   tree.setPositions(0);
+  cout << "Complete\n";
 }
 
